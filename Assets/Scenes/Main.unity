@@ -6585,6 +6585,7 @@ GameObject:
   m_Component:
   - component: {fileID: 187907835}
   - component: {fileID: 187907834}
+  - component: {fileID: 187907836}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -6659,6 +6660,69 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &187907836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187907833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67f90be2fd4d646ce9d5dbec096a3fe0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputMove:
+    m_Name: Input Move
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 09f2005e-2cbc-4fc0-8c6e-46d3a9dfdfdd
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 2D Vector
+      m_Id: 24c18954-b703-4b58-92bd-dd052b4e35ea
+      m_Path: 2DVector
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Input Move
+      m_Flags: 4
+    - m_Name: up
+      m_Id: 96ac09eb-1169-4667-ac34-1885b1df5ec4
+      m_Path: <Keyboard>/upArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Input Move
+      m_Flags: 8
+    - m_Name: down
+      m_Id: 8d5f2e0f-6d0f-4d6a-b812-f8ad54c84be2
+      m_Path: <Keyboard>/downArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Input Move
+      m_Flags: 8
+    - m_Name: left
+      m_Id: d2b44bf8-fd16-4674-981d-a24f296ef2b1
+      m_Path: <Keyboard>/leftArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Input Move
+      m_Flags: 8
+    - m_Name: right
+      m_Id: 41daba3e-8f74-4f4c-901d-fed5dc1924ac
+      m_Path: <Keyboard>/rightArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Input Move
+      m_Flags: 8
+    m_Flags: 0
+  moveValue: {x: 0, y: 0}
+  speed: 0.001
 --- !u!1 &232786925
 GameObject:
   m_ObjectHideFlags: 0
