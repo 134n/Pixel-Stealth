@@ -6,6 +6,7 @@ using VContainer;
 public class TitleTop : MonoBehaviour
 {
     [SerializeField] Button stageSelect;
+    
     [SerializeField] Button menu;
 
     private ScreenChange screenChange;
@@ -21,7 +22,7 @@ public class TitleTop : MonoBehaviour
         stageSelect.OnClickAsObservable()
                 .Subscribe(_ => screenChange.ScreenChanged(ScreenStatus.Screen.StageSelect))
                 .AddTo(this);
-        
+
         menu.OnClickAsObservable()
                 .Subscribe(_ => screenChange.ScreenChanged(ScreenStatus.Screen.Menu))
                 .AddTo(this);
