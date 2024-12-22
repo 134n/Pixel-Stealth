@@ -10,7 +10,7 @@ public class ScreenStatus
         Title,
         StageSelect,
         Menu,
-        License,
+        Result,
         Main,
     }
 }
