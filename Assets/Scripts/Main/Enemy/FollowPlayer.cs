@@ -1,18 +1,22 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class FollowPlayer : MonoBehaviour
 {
-    NavMeshAgent2D agent; //NavMeshAgent2Dを使用するための変数
-    [SerializeField] Transform target; //追跡するターゲット
+     //NavMeshAgent2Dを使用するための変数
+    [SerializeField] private Transform target; //追跡するターゲット
+
+    NavMeshAgent agent;
 
     void Start()
     {
-        agent = GetComponent<NavMeshAgent2D>(); //agentにNavMeshAgent2Dを取得
+        agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
     }
 
     void Update()
     {
-        agent.destination = target.position; //agentの目的地をtargetの座標にする
-		//agent.SetDestination(target.position); //こっちの書き方でもオッケー
+        agent. SetDestination(target.position);
     }
 }
