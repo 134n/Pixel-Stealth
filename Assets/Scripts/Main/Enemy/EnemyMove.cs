@@ -7,6 +7,7 @@ public class FollowPlayer
 {
     public void Follow(NavMeshAgent agent, Transform target)
     {
+        if (target == null || target.gameObject == null) { return; }
         agent.SetDestination(target.position);
     }
 }
