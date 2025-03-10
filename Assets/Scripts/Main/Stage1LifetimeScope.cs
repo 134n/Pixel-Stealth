@@ -10,7 +10,7 @@ public class Stage1LifetimeScope : LifetimeScope
     [SerializeField] private PlayerPickItemController playerPickItemController;
 
     [SerializeField] private EnemyTrack enemyTrack;
-    
+
     protected override void Configure(IContainerBuilder builder)
     {
         builder.Register<ScreenChange>(Lifetime.Singleton);
@@ -24,5 +24,12 @@ public class Stage1LifetimeScope : LifetimeScope
         builder.RegisterComponent(playerPickItemController);
         builder.RegisterComponent(enemyCollider);
         builder.RegisterComponent(enemyTrack);
+
+        builder.RegisterComponentInHierarchy<GoalController>();
+        builder.RegisterComponentInHierarchy<GameClear>();
+        builder.RegisterEntryPoint<GoalPresenter>();
+        builder.RegisterEntryPoint<GameClearPresenter>();
+        builder.Register<GoalService>(Lifetime.Scoped);
+        builder.Register<GameClearService>(Lifetime.Singleton);
     }
 }
