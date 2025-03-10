@@ -25,7 +25,7 @@ public class EnemyTrack : MonoBehaviour
 
     [Inject] public void Inject(WaitTime waitTime) { this.waitTime = waitTime; }
 
-    private bool isPatrol = false;
+    private bool isPatrol = true;
     private bool isFollow = false;
 
     private NavMeshAgent agent;
