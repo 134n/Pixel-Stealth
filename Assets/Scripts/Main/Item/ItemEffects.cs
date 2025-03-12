@@ -4,7 +4,7 @@ public class ItemKey
 {
     private readonly PlayerStatus player;
 
-    private const int keyCount = 1;
+    private const int KeyCount = 1;
 
     public ItemKey(PlayerStatus player)
     {
@@ -13,8 +13,7 @@ public class ItemKey
     
     public void Pick()
     {
-        player.Key += keyCount;
-        
+        player.Key += KeyCount;
         Debug.Log(player.Key);
     }
 }
