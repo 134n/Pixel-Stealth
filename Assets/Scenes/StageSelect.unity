@@ -663,9 +663,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd302d0679f6046a2a975c7306db79da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stage1: {fileID: 923913288}
-  stage2: {fileID: 824199493}
-  stage3: {fileID: 1856171875}
+  stage:
+  - {fileID: 923913288}
+  - {fileID: 824199493}
+  - {fileID: 1856171875}
   buck: {fileID: 1410928308}
 --- !u!1 &1253932874
 GameObject:
@@ -944,7 +945,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Stage1
+  m_Text: Stage3
 --- !u!222 &1575862905
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1024,7 +1025,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Stage1
+  m_Text: Stage2
 --- !u!222 &1834363502
 CanvasRenderer:
   m_ObjectHideFlags: 0
