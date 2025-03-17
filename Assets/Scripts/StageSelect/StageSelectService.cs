@@ -1,9 +1,6 @@
-using UnityEngine;
-using UnityEngine.UI;
-using UniRx;
 using VContainer;
 
-public class StageSelectService 
+public class StageSelectService
 {
     private ScreenChange screenChange;
 
@@ -13,8 +10,13 @@ public class StageSelectService
         this.screenChange = screenChange;
     }
 
-    public void OnClickButtonScreenChange(ScreenStatus.Screen nextScreen)
+    public void OnClickButtonScreenChange(ScreenStatus.Screen nextscreen)
     {
-        screenChange.ScreenChanged(nextScreen);
+        screenChange.ChangeScreen(nextscreen);
+    }
+
+    public void OnClickButtonScreenChangeByName(string nextScreen)
+    {
+        screenChange.ChangeScreenByName(nextScreen);
     }
 }

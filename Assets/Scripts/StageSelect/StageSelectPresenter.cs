@@ -1,3 +1,4 @@
+using System.Linq;
 using UniRx;
 using VContainer.Unity;
 
@@ -7,7 +8,7 @@ public class StageSelectPresenter : IStartable
 
     private StageSelectService stageSelectService;
 
-    public StageSelectPresenter(StageSelectButton stageSelectButton,StageSelectService stageSelectService)
+    public StageSelectPresenter(StageSelectButton stageSelectButton, StageSelectService stageSelectService)
     {
         this.stageSelectButton = stageSelectButton;
         this.stageSelectService = stageSelectService;
@@ -15,8 +16,13 @@ public class StageSelectPresenter : IStartable
 
     void IStartable.Start()
     {
-        stageSelectButton.stage1.OnClickAsObservable()
-            .Subscribe(_ => stageSelectService.OnClickButtonScreenChange(ScreenStatus.Screen.Main))
-            .AddTo(stageSelectButton.stage1);
+        Observable.Merge(
+            stageSelectButton.stage.Select(button => button.OnClickAsObservable().Select(_ => button.name)))
+            .Subscribe(name => stageSelectService.OnClickButtonScreenChangeByName(name))
+            .AddTo(stageSelectButton);
+
+        stageSelectButton.buck.OnClickAsObservable()
+            .Subscribe(_=>stageSelectService.OnClickButtonScreenChange(ScreenStatus.Screen.Title))
+            .AddTo(stageSelectButton);
     }
 }

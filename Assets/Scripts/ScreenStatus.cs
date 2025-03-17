@@ -12,7 +12,10 @@ public class ScreenStatus
         StageSelect,
         Menu,
         Result,
-        Main,
+        Stage1,
+        Stage2,
+        Stage3,
+        
     }
 }
 
@@ -24,5 +27,10 @@ public sealed class ScreenChange
     {
         NowScreen.Value = nextScreen;
         SceneManager.LoadScene(NowScreen.ToString());
+    }
+
+    public void ChangeScreenByName(string stageName)
+    {
+        SceneManager.LoadScene(stageName);
     }
 }
