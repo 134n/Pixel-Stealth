@@ -36,7 +36,7 @@ public class GameClearPresenter : IStartable
             .AddTo(goalController);
         
         gameClear.resultButton.OnClickAsObservable()
-            .Subscribe(_ => screenChange.ScreenChanged(ScreenStatus.Screen.Result))
+            .Subscribe(_ => screenChange.ChangeScreen(ScreenStatus.Screen.Result))
             .AddTo(gameClear);
     }
 }

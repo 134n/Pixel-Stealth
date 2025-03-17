@@ -1,3 +1,4 @@
+using System;
 using UniRx;
 using UnityEngine.SceneManagement;
 
@@ -18,7 +19,8 @@ public class ScreenStatus
 public sealed class ScreenChange
 {
     readonly ReactiveProperty<ScreenStatus.Screen> NowScreen = new();
-    public void ScreenChanged(ScreenStatus.Screen nextScreen)
+
+    public void ChangeScreen(ScreenStatus.Screen nextScreen)
     {
         NowScreen.Value = nextScreen;
         SceneManager.LoadScene(NowScreen.ToString());

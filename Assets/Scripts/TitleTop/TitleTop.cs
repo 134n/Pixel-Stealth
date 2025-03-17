@@ -20,11 +20,11 @@ public class TitleTop : MonoBehaviour
     public void Start()
     {
         stageSelect.OnClickAsObservable()
-                .Subscribe(_ => screenChange.ScreenChanged(ScreenStatus.Screen.StageSelect))
+                .Subscribe(_ => screenChange.ChangeScreen(ScreenStatus.Screen.StageSelect))
                 .AddTo(this);
 
         menu.OnClickAsObservable()
-                .Subscribe(_ => screenChange.ScreenChanged(ScreenStatus.Screen.Menu))
+                .Subscribe(_ => screenChange.ChangeScreen(ScreenStatus.Screen.Menu))
                 .AddTo(this);
     }
 }
