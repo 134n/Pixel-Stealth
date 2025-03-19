@@ -21,7 +21,10 @@ public class PlayerPickItemController : MonoBehaviour
     {
         this.OnTriggerEnter2DAsObservable()
             .Where(other => other.gameObject.name == Key)
-            .Subscribe(other => itemKey.Pick())
+            .Subscribe(other => {
+                itemKey.Pick();
+                Destroy(other.gameObject);
+                })
             .AddTo(this);
 
         this.OnTriggerEnter2DAsObservable()
