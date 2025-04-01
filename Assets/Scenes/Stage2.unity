@@ -4333,7 +4333,6 @@ MonoBehaviour:
   autoRun: 1
   autoInjectGameObjects: []
   enemyCollider: {fileID: 232786929}
-  playerPickItemController: {fileID: 187907841}
   enemyTrack: {fileID: 232786932}
 --- !u!4 &154311922
 Transform:
@@ -11016,8 +11015,8 @@ GameObject:
   - component: {fileID: 187907836}
   - component: {fileID: 187907837}
   - component: {fileID: 187907839}
-  - component: {fileID: 187907841}
   - component: {fileID: 187907840}
+  - component: {fileID: 187907841}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -11239,9 +11238,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 187907833}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f15fd763920442ad8ca9572e42770d2, type: 3}
+  m_Script: {fileID: 11500000, guid: 44846af98abd444b69bfdbada8870493, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 187907833}
 --- !u!1 &192643547
 GameObject:
   m_ObjectHideFlags: 0
@@ -14884,6 +14884,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goalObject: {fileID: 1940613825}
+  requiredItemCount: 3
 --- !u!1 &1944423735
 GameObject:
   m_ObjectHideFlags: 0
