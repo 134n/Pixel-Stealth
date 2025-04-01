@@ -17,6 +17,6 @@ public class Menu : MonoBehaviour
     private void Start()
     {
         buck.OnClickAsObservable()
-            .Subscribe(_ => screenChange.ScreenChanged(ScreenStatus.Screen.Title));
+            .Subscribe(_ => screenChange.ChangeScreen(ScreenStatus.Screen.Title));
     }
 }
