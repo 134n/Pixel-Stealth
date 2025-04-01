@@ -27,7 +27,7 @@ public class GameClearPresenter : IStartable
     {
         gameClearService.NonDisplayGameClear();
 
-        goalController.goalObject.OnTriggerEnter2DAsObservable()
+        goalController.GoalObject.OnTriggerEnter2DAsObservable()
             .Where(other => other.gameObject.name == "Player")
             .Subscribe(other => {
                 gameClearService.DisplayGameClear();

@@ -1,5 +1,6 @@
+using UniRx;
+
 public class PlayerStatus
 {
-    public int Key { get; set; }
-    public int Matatabi { get; set; }
+    public ReactiveProperty<int> Key { get; set; } = new ReactiveProperty<int>(0);
 }

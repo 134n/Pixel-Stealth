@@ -1,6 +1,5 @@
 using Cysharp.Threading.Tasks;
 using UniRx;
-using UniRx.Triggers;
 using VContainer.Unity;
 
 public class GoalPresenter : IStartable
@@ -11,23 +10,20 @@ public class GoalPresenter : IStartable
 
     private readonly PlayerStatus playerStatus;
 
-    private readonly PlayerPickItemController playerPickItemController;
-
-    public GoalPresenter(GoalService service, GoalController goalController, PlayerStatus playerStatus, PlayerPickItemController playerPickItemController)
+    public GoalPresenter(GoalService service, GoalController goalController, PlayerStatus playerStatus)
     {
         this.service = service;
         this.goalController = goalController;
         this.playerStatus = playerStatus;
-        this.playerPickItemController = playerPickItemController;
     }
 
     void IStartable.Start()
     {
         service.NonDisplayGoalObj();
 
-        playerPickItemController.UpdateAsObservable()
-            .Where(_ => playerStatus.Key >= 3)
+        playerStatus.Key
+            .Where(key => key >= goalController.RequiredItemCount)
             .Subscribe(_ => service.DisplayGoalObj())
-            .AddTo(goalController);
+            .AddTo(goalController.GoalObject);
     }
 }

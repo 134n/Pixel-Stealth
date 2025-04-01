@@ -12,7 +12,7 @@ public class GoalService
     /// </summary>
     public void NonDisplayGoalObj()
     {
-        goalController.goalObject.SetActive(false);
+        goalController.GoalObject.SetActive(false);
     }
 
     /// <summary>
@@ -20,6 +20,6 @@ public class GoalService
     /// </summary>
     public void DisplayGoalObj()
     {
-        goalController.goalObject.SetActive(true);
+        goalController.GoalObject.SetActive(true);
     }
 }
