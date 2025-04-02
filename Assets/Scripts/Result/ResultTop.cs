@@ -20,9 +20,9 @@ public class ResultTop : MonoBehaviour
     public void Start()
     {
         toTitle.OnClickAsObservable()
-            .Subscribe(_ => screenChange.ScreenChanged(ScreenStatus.Screen.Title));
+            .Subscribe(_ => screenChange.ChangeScreen(ScreenStatus.Screen.Title));
 
         retry.OnClickAsObservable()
-            .Subscribe(_ => screenChange.ScreenChanged(ScreenStatus.Screen.Main));
+            .Subscribe(_ => screenChange.ChangeScreen(ScreenStatus.Screen.Stage1));
     }
 }

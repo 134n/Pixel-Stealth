@@ -15,7 +15,7 @@ public class EnemyCollider : MonoBehaviour
     {
         this.OnTriggerEnter2DAsObservable()
             .Where(other => other.gameObject.name == player)
-            .Subscribe(other => screenChange.ScreenChanged(ScreenStatus.Screen.Result))
+            .Subscribe(other => screenChange.ChangeScreen(ScreenStatus.Screen.Result))
             .AddTo(this);
     }
 }
