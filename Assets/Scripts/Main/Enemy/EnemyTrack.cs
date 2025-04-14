@@ -19,11 +19,13 @@ public class EnemyTrack : MonoBehaviour
 
     private WaitTime waitTime;
 
-    [Inject] public void Inject(FollowPlayer followPlayer) { this.followPlayer = followPlayer; }
-
-    [Inject] public void Inject(WanderingEnemy wanderingEnemy) { this.wanderingEnemy = wanderingEnemy; }
-
-    [Inject] public void Inject(WaitTime waitTime) { this.waitTime = waitTime; }
+    [Inject] 
+    public void Inject(FollowPlayer followPlayer,WanderingEnemy wanderingEnemy,WaitTime waitTime) 
+    { 
+        this.followPlayer = followPlayer; 
+        this.wanderingEnemy = wanderingEnemy;
+        this.waitTime = waitTime;
+    }
 
     private bool isPatrol = true;
     private bool isFollow = false;
