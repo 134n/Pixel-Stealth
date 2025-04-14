@@ -1,14 +1,8 @@
-using Unity.Services.Analytics;
-using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
 public class Stage1LifetimeScope : LifetimeScope
 {
-    [SerializeField] private EnemyCollider enemyCollider;
-
-    [SerializeField] private EnemyTrack enemyTrack;
-
     protected override void Configure(IContainerBuilder builder)
     {
         builder.Register<ScreenChange>(Lifetime.Singleton);
@@ -21,8 +15,8 @@ public class Stage1LifetimeScope : LifetimeScope
         builder.RegisterEntryPoint<PickItemPresenter>();
         builder.Register<GetKey>(Lifetime.Singleton);
 
-        builder.RegisterComponent(enemyCollider);
-        builder.RegisterComponent(enemyTrack);
+        builder.RegisterComponentInHierarchy<EnemyCollider>();
+        builder.RegisterComponentInHierarchy<EnemyTrack>();
 
         builder.RegisterComponentInHierarchy<GoalController>();
         builder.RegisterComponentInHierarchy<GameClear>();
