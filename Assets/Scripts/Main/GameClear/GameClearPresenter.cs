@@ -14,18 +14,22 @@ public class GameClearPresenter : IStartable
 
     private ScreenChange screenChange;
 
+    private ResultService resultService;
+
     public GameClearPresenter(GameClear gameClear,GameClearService gameClearService,GoalController 
-        goalController,ScreenChange screenChange) 
+        goalController,ScreenChange screenChange,ResultService resultService) 
     { 
         this.gameClear  = gameClear;
         this.gameClearService = gameClearService;
         this.goalController = goalController;
         this.screenChange = screenChange;
+        this.resultService = resultService;
     }
 
     void IStartable.Start()
     {
         gameClearService.NonDisplayGameClear();
+        resultService.SaveRetryScene();
 
         goalController.GoalObject.OnTriggerEnter2DAsObservable()
             .Where(other => other.gameObject.name == "Player")

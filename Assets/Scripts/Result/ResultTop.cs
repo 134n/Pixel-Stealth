@@ -1,28 +1,29 @@
-using UnityEngine;
-using UnityEngine.UI;
 using UniRx;
 using VContainer;
+using VContainer.Unity;
 
-public class ResultTop : MonoBehaviour
+public class ResultTop : IStartable
 {
-    [SerializeField] Button retry;
-
-    [SerializeField] Button toTitle;
-
     private ScreenChange screenChange;
 
+    private ResultView resultView;
+
+    private ResultService resultService;
+
     [Inject]
-    public void Inject(ScreenChange screenChange)
+    public void Inject(ScreenChange screenChange,ResultView resultView,ResultService resultService)
     {
         this.screenChange = screenChange;
+        this.resultView = resultView;
+        this.resultService = resultService;
     }
 
-    public void Start()
+    void IStartable.Start()
     {
-        toTitle.OnClickAsObservable()
+        resultView.ToTitle.OnClickAsObservable()
             .Subscribe(_ => screenChange.ChangeScreen(ScreenStatus.Screen.Title));
 
-        retry.OnClickAsObservable()
-            .Subscribe(_ => screenChange.ChangeScreen(ScreenStatus.Screen.Stage1));
+        resultView.Retry.OnClickAsObservable()
+            .Subscribe(_ => resultService.LoadRetryScene());
     }
 }

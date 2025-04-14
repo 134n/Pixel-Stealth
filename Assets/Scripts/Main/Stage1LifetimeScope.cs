@@ -30,5 +30,7 @@ public class Stage1LifetimeScope : LifetimeScope
         builder.RegisterEntryPoint<GameClearPresenter>();
         builder.Register<GoalService>(Lifetime.Scoped);
         builder.Register<GameClearService>(Lifetime.Singleton);
+
+        builder.Register<ResultService>(Lifetime.Singleton);
     }
 }
