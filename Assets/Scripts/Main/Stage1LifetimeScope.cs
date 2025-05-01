@@ -26,5 +26,9 @@ public class Stage1LifetimeScope : LifetimeScope
         builder.Register<GameClearService>(Lifetime.Singleton);
 
         builder.Register<ResultService>(Lifetime.Singleton);
+        
+        builder.RegisterComponentInHierarchy<HUDManager>();
+        builder.RegisterEntryPoint<HUDPlesenter>();
+        builder.Register<HUDService>(Lifetime.Singleton);
     }
 }

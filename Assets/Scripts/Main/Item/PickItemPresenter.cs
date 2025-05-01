@@ -9,11 +9,14 @@ public class PickItemPresenter : IStartable
 
     private GetKey getKey;
 
+    private HUDService hUDService;
+
     [Inject]
-    public void Inject(PlayerView playerView, GetKey getKey)
+    public void Inject(PlayerView playerView, GetKey getKey, HUDService hUDService)
     {
         this.playerView = playerView;
         this.getKey = getKey;
+        this.hUDService = hUDService;
     }
 
     private const string Key = "ItemKey";
@@ -25,6 +28,7 @@ public class PickItemPresenter : IStartable
             .Subscribe(other =>
             {
                 getKey.ItemPick();
+                hUDService.CollectItem();
                 playerView.DestroyObj(other.gameObject);
             })
             .AddTo(playerView);
