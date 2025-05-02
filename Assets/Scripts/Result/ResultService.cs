@@ -4,8 +4,6 @@ using UnityEngine.SceneManagement;
 public class ResultService
 {
     public static string retryScene;
-
-    //public ReactiveProperty<string> ItemCountToClear { get; } = new ReactiveProperty<string>();
     
     public void SaveRetryScene()
     {
