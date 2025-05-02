@@ -14,18 +14,15 @@ public class GameClearPresenter : IStartable
 
     private ScreenChange screenChange;
 
-    private ResultService resultService;
-
     private HUDService hUDService;
 
     public GameClearPresenter(GameClear gameClear,GameClearService gameClearService,GoalController 
-        goalController,ScreenChange screenChange,ResultService resultService,HUDService hUDService) 
+        goalController,ScreenChange screenChange,HUDService hUDService) 
     { 
         this.gameClear  = gameClear;
         this.gameClearService = gameClearService;
         this.goalController = goalController;
         this.screenChange = screenChange;
-        this.resultService = resultService;
         this.hUDService = hUDService;
     }
 
