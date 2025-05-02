@@ -22,11 +22,9 @@ public class HUDService
         this.goalController = goalController;
     }
 
-    public static float limitTime = 300f;  // 例: 5分（300秒）
-
     public static string stageName;
 
-    public static bool timeUp;
+    public bool limitTime = true;
 
     public void ObjectiveText()
     {
@@ -48,22 +46,20 @@ public class HUDService
         hUDManager.stageText.text = stageName;
     }
 
-    public void TimerSet()
-    {
-        hUDManager.timerText.text = limitTime.ToString();
-    }
-
     public void TimerStart()
     {
-        limitTime -= 1 * Time.deltaTime;
-        hUDManager.timerText.text = Mathf.FloorToInt(limitTime).ToString();
+        if(limitTime)
+        {
+            hUDManager.limitTime -= 1 * Time.deltaTime;
+            hUDManager.timerText.text = "Limit:"+Mathf.FloorToInt(hUDManager.limitTime).ToString();
+        }
     }
 
     public void CollectItem()
     {
         hUDManager.OnItemCollected.OnNext(Unit.Default);
     }
-    
+
     public void ItemPickUI()
     {
         //アイテム個数分グレー表示

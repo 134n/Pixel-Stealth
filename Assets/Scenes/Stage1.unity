@@ -11724,6 +11724,7 @@ MonoBehaviour:
   stageText: {fileID: 2126258645}
   timerText: {fileID: 219559270}
   objectiveText: {fileID: 2062330900}
+  limitTime: 100
   itemSlots:
   - {fileID: 279827771}
   - {fileID: 870846396}

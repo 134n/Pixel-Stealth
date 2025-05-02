@@ -9,7 +9,9 @@ public class HUDManager : MonoBehaviour
 
     [SerializeField] public Text timerText;
     
-    [SerializeField] public Text objectiveText;//目標
+    [SerializeField] public Text objectiveText;
+
+    [SerializeField] public float limitTime;
 
     /// <summary>
     /// アイテムUI

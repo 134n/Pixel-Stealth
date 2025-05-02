@@ -16,7 +16,6 @@ public class HUDPlesenter : ITickable , IStartable
     void IStartable.Start()
     {
         hUDService.StageName();
-        hUDService.TimerSet();
         hUDService.ObjectiveText();
         hUDService.ItemPickUI();
     }
