@@ -2,7 +2,7 @@ public class GoalService
 {
     private GoalController goalController;
 
-    public GoalService(GoalController goalController,GameClear gameClear)
+    public GoalService(GoalController goalController)
     {
         this.goalController = goalController;
     }
@@ -13,6 +13,7 @@ public class GoalService
     public void NonDisplayGoalObj()
     {
         goalController.GoalObject.SetActive(false);
+        goalController.IsGoal = false;
     }
 
     /// <summary>
@@ -21,5 +22,6 @@ public class GoalService
     public void DisplayGoalObj()
     {
         goalController.GoalObject.SetActive(true);
+        goalController.IsGoal = true;
     }
 }
