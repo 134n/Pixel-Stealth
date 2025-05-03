@@ -13,13 +13,17 @@ public class GoalPresenter : IStartable
 
     private ResultService resultService;
 
+    private GoalNaviView goalNaviView;
+
     [Inject]
-    public GoalPresenter(GoalService service, GoalController goalController, PlayerStatus playerStatus,ResultService resultService)
+    public GoalPresenter(GoalService service, GoalController goalController, PlayerStatus playerStatus
+                            , ResultService resultService, GoalNaviView goalNaviView)
     {
         this.service = service;
         this.goalController = goalController;
         this.playerStatus = playerStatus;
         this.resultService = resultService;
+        this.goalNaviView = goalNaviView;
     }
 
     void IStartable.Start()
@@ -29,7 +33,11 @@ public class GoalPresenter : IStartable
 
         playerStatus.Key
             .Where(key => key >= goalController.RequiredItemCount)
-            .Subscribe(_ => service.DisplayGoalObj())
+            .Subscribe(_ =>
+            {
+                service.DisplayGoalObj();
+                goalNaviView.TriggerGoalNavi();
+            })
             .AddTo(goalController.GoalObject);
     }
 }
