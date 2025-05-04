@@ -7,7 +7,7 @@ public class Move : MonoBehaviour
 
     public Vector2 moveValue;
 
-    public float speed = 0.001f;
+    public float speed = 1f;
 
 
     private void OnEnable()
@@ -25,8 +25,8 @@ public class Move : MonoBehaviour
         moveValue = inputMove.ReadValue<Vector2>();
 
         transform.Translate(
-            moveValue.x * speed,
-            moveValue.y * speed,
+            moveValue.x * speed * Time.deltaTime,
+            moveValue.y * speed * Time.deltaTime,
             0.0f);
     }
 }
