@@ -30,5 +30,9 @@ public class Stage1LifetimeScope : LifetimeScope
         builder.RegisterComponentInHierarchy<HUDManager>();
         builder.RegisterEntryPoint<HUDPlesenter>();
         builder.Register<HUDService>(Lifetime.Singleton);
+
+        builder.RegisterComponentInHierarchy<GoalNaviView>();
+        builder.RegisterEntryPoint<GoalNaviPresenter>();
+        builder.Register<GoalNaviService>(Lifetime.Singleton);
     }
 }
