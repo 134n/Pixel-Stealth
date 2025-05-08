@@ -34,5 +34,9 @@ public class Stage1LifetimeScope : LifetimeScope
         builder.RegisterComponentInHierarchy<GoalNaviView>();
         builder.RegisterEntryPoint<GoalNaviPresenter>();
         builder.Register<GoalNaviService>(Lifetime.Singleton);
+
+        builder.RegisterComponentInHierarchy<GameOverView>();
+        builder.RegisterEntryPoint<GameOverPresenter>();
+        builder.Register<GameOverService>(Lifetime.Singleton);
     }
 }
