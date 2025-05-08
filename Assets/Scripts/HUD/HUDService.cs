@@ -14,17 +14,21 @@ public class HUDService
 
     private GoalController goalController;
 
+    private GameOverService gameOverService;
+
     [Inject]
-    public void Inject(HUDManager hUDManager, PlayerStatus playerStatus, GoalController goalController)
+    public void Inject(HUDManager hUDManager, PlayerStatus playerStatus, GoalController goalController
+        , GameOverService gameOverService)
     {
         this.hUDManager = hUDManager;
         this.playerStatus = playerStatus;
         this.goalController = goalController;
+        this.gameOverService = gameOverService;
     }
 
     public static string stageName;
 
-    public bool limitTime = true;
+    public bool isTimerRun = true;
 
     public void ObjectiveText()
     {
@@ -46,13 +50,31 @@ public class HUDService
         hUDManager.stageText.text = stageName;
     }
 
-    public void TimerStart()
+    public void StartTimer()
     {
-        if(limitTime)
+        isTimerRun = true;
+        UpdateTimerText();
+    }
+
+    public void UpdateTimer()
+    {
+        if (!isTimerRun) return;
+        
+        hUDManager.limitTime -= 1 * Time.deltaTime;
+
+        if (hUDManager.limitTime <= 0f)
         {
-            hUDManager.limitTime -= 1 * Time.deltaTime;
-            hUDManager.timerText.text = "Limit:"+Mathf.FloorToInt(hUDManager.limitTime).ToString();
+            hUDManager.limitTime = 0f;
+            isTimerRun = false;
+            gameOverService.LimitTimeSubject();
         }
+
+        UpdateTimerText();
+    }
+
+    public void UpdateTimerText()
+    {
+        hUDManager.timerText.text = "Limit:" + Mathf.FloorToInt(hUDManager.limitTime).ToString();
     }
 
     public void CollectItem()

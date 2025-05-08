@@ -18,10 +18,11 @@ public class HUDPlesenter : ITickable , IStartable
         hUDService.StageName();
         hUDService.ObjectiveText();
         hUDService.ItemPickUI();
+        hUDService.StartTimer();
     }
 
     void ITickable.Tick()
     {
-        hUDService.TimerStart();
+        hUDService.UpdateTimer();
     }
 }
