@@ -2,7 +2,12 @@ public class GameClearService
 {
     private GameClear gameClear;
 
-    public GameClearService(GameClear gameClear) { this.gameClear = gameClear; }
+    private HUDManager hUDManager;
+
+    public GameClearService(GameClear gameClear,HUDManager hUDManager) { 
+        this.gameClear = gameClear; 
+        this.hUDManager = hUDManager;
+        }
     
     /// <summary>
     /// ゲームクリア画面の非表示
@@ -18,5 +23,10 @@ public class GameClearService
     public void DisplayGameClear()
     {
         gameClear.gameClearObj.SetActive(true);
+    }
+
+    public void SetGameClearResultData()
+    {
+        ResultDataStore.LimitTimeData = hUDManager.limitTime;
     }
 }

@@ -28,7 +28,19 @@ public class HUDService
 
     public static string stageName;
 
-    public bool isTimerRun = true;
+    private static bool isTimerRun = true;
+
+    public bool IsTimerRun
+    {
+        set => isTimerRun = value;
+        get => isTimerRun;
+    } 
+
+    public void TimerStop()
+    {
+        if(!IsTimerRun) return;
+        IsTimerRun = false;
+    }
 
     public void ObjectiveText()
     {
@@ -59,7 +71,7 @@ public class HUDService
     public void UpdateTimer()
     {
         if (!isTimerRun) return;
-        
+
         hUDManager.limitTime -= 1 * Time.deltaTime;
 
         if (hUDManager.limitTime <= 0f)

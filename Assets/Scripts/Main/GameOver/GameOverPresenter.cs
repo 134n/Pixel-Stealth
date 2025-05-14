@@ -31,6 +31,7 @@ public class GameOverPresenter : IStartable
             {
                 playerView.Player.SetActive(false);
                 gameOverService.DisplayGameOver();
+                gameOverService.SetGameOverResultData();
             })
             .AddTo(gameOverView);
 

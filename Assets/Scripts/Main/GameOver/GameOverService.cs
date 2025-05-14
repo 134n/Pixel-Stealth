@@ -28,4 +28,9 @@ public class GameOverService
     {
         LimitSub.OnNext(Unit.Default);
     }
+
+    public void SetGameOverResultData()
+    {
+        ResultDataStore.LimitTimeData = 0;
+    }
 }

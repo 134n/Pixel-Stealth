@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,4 +10,8 @@ public class ResultView : MonoBehaviour
     public Button Retry => retry;
 
     public Button ToTitle => toTitle;
+
+    public Text ResultTimeText;
+
+    public Text ResultRankText;
 }

@@ -5,9 +5,20 @@ using VContainer;
 
 public class EnemyCollider : MonoBehaviour
 {
-    private ScreenChange screenChange;
+    private PlayerView playerView;
 
-    [Inject] public void Inject(ScreenChange screenChange) => this.screenChange = screenChange;
+    private GameOverService gameOverService;
+
+    private HUDService hUDService;
+
+    [Inject]
+    public void Inject(PlayerView playerView, 
+        GameOverService gameOverService, HUDService hUDService)
+    {
+        this.playerView = playerView;
+        this.gameOverService = gameOverService;
+        this.hUDService = hUDService;
+    }
 
     public const string player = "Player";
 
@@ -15,7 +26,13 @@ public class EnemyCollider : MonoBehaviour
     {
         this.OnTriggerEnter2DAsObservable()
             .Where(other => other.gameObject.name == player)
-            .Subscribe(other => screenChange.ChangeScreen(ScreenStatus.Screen.Result))
+            .Subscribe(other =>
+            {
+                playerView.Player.SetActive(false);
+                gameOverService.DisplayGameOver();
+                gameOverService.SetGameOverResultData();
+                hUDService.TimerStop();
+            })
             .AddTo(this);
     }
 }

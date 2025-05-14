@@ -35,7 +35,8 @@ public class GameClearPresenter : IStartable
             .Subscribe(other => {
                 gameClearService.DisplayGameClear();
                 Object.Destroy(other.gameObject);
-                hUDService.isTimerRun = false;
+                hUDService.TimerStop();
+                gameClearService.SetGameClearResultData();
                 })
             .AddTo(goalController);
         

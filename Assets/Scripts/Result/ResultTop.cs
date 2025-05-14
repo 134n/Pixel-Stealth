@@ -4,25 +4,32 @@ using VContainer.Unity;
 
 public class ResultTop : IStartable
 {
-    private ScreenChange screenChange;
+    private readonly ResultView resultView;
 
-    private ResultView resultView;
+    private readonly ScreenChange screenChange;
 
-    private ResultService resultService;
+    private readonly ResultService resultService;
 
     [Inject]
-    public void Inject(ScreenChange screenChange,ResultView resultView,ResultService resultService)
+    public ResultTop(ResultView resultView, ScreenChange screenChange,
+        ResultService resultService)
     {
-        this.screenChange = screenChange;
         this.resultView = resultView;
+        this.screenChange = screenChange;
         this.resultService = resultService;
     }
 
     void IStartable.Start()
     {
+        resultView.ResultTimeText.text = "Time: " + ResultDataStore.LimitTimeData.ToString("F2");
+
+        ResultDataStore.RankData = resultService.RankCheck();
+        
+        resultView.ResultRankText.text = "Rank: " + ResultDataStore.RankData;
+
         resultView.ToTitle.OnClickAsObservable()
             .Subscribe(_ => screenChange.ChangeScreen(ScreenStatus.Screen.Title));
-
+            
         resultView.Retry.OnClickAsObservable()
             .Subscribe(_ => resultService.LoadRetryScene());
     }
