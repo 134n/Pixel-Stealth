@@ -81,3 +81,6 @@ Assets/PlayFabEditorExtensions/
 *.old
 .DS_Store
 Thumbs.db
+
+# PlayFab YRC_PlayFabRankingTools
+Assets/Yu-Rin-ChiLibrary/
