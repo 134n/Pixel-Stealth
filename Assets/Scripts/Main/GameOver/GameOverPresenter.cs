@@ -12,14 +12,17 @@ public class GameOverPresenter : IStartable
 
     private PlayerView playerView;
 
+    private ResultDataStore resultDataStore;
+
     [Inject]
     public GameOverPresenter(GameOverView gameOverView, GameOverService gameOverService,
-        ScreenChange screenChange, PlayerView playerView)
+        ScreenChange screenChange, PlayerView playerView, ResultDataStore resultDataStore)
     {
         this.gameOverView = gameOverView;
         this.gameOverService = gameOverService;
         this.screenChange = screenChange;
         this.playerView = playerView;
+        this.resultDataStore = resultDataStore;
     }
 
     void IStartable.Start()
@@ -27,11 +30,12 @@ public class GameOverPresenter : IStartable
         gameOverService.NonDisplayGameOver();
 
         gameOverService.LimitSub
-            .Subscribe(_ =>
+            .Subscribe(async _ =>
             {
                 playerView.Player.SetActive(false);
                 gameOverService.DisplayGameOver();
                 gameOverService.SetGameOverResultData();
+                await resultDataStore.SubmitScoreAsync();
             })
             .AddTo(gameOverView);
 

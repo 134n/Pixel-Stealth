@@ -38,5 +38,7 @@ public class Stage1LifetimeScope : LifetimeScope
         builder.RegisterComponentInHierarchy<GameOverView>();
         builder.RegisterEntryPoint<GameOverPresenter>();
         builder.Register<GameOverService>(Lifetime.Singleton);
+
+        builder.Register<ResultDataStore>(Lifetime.Singleton);
     }
 }

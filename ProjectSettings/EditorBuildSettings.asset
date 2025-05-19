@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Result.unity
     guid: 8ad303b5edaeb4b6ab281621eef8f9bd
+  - enabled: 1
+    path: Assets/Yu-Rin-ChiLibrary/PlayFabRankingTools/Scene/AdditiveRankingScene.unity
+    guid: 6959afac5c952b742a5b4b5894013c26
   m_configObjects: {}

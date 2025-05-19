@@ -1,6 +1,7 @@
 using UniRx;
 using VContainer;
 using VContainer.Unity;
+using YuRinChiLibrary.PlayFab;
 
 public class ResultTop : IStartable
 {
@@ -21,16 +22,21 @@ public class ResultTop : IStartable
 
     void IStartable.Start()
     {
+        PlayFabManager.Instance.LoadRankingScene("HighScore");
+
         resultView.ResultTimeText.text = "Time: " + ResultDataStore.LimitTimeData.ToString("F2");
 
         ResultDataStore.RankData = resultService.RankCheck();
-        
+
         resultView.ResultRankText.text = "Rank: " + ResultDataStore.RankData;
 
         resultView.ToTitle.OnClickAsObservable()
             .Subscribe(_ => screenChange.ChangeScreen(ScreenStatus.Screen.Title));
-            
+
         resultView.Retry.OnClickAsObservable()
             .Subscribe(_ => resultService.LoadRetryScene());
+
+        resultView.Ranking.OnClickAsObservable()
+            .Subscribe(_ => PlayFabManager.Instance.LoadRankingScene("HighScore"));
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 using VContainer.Unity;
 
 public class GameClearPresenter : IStartable
-{   
+{
     private GameClear gameClear;
 
     private GameClearService gameClearService;
@@ -16,14 +16,17 @@ public class GameClearPresenter : IStartable
 
     private HUDService hUDService;
 
-    public GameClearPresenter(GameClear gameClear,GameClearService gameClearService,GoalController 
-        goalController,ScreenChange screenChange,HUDService hUDService) 
-    { 
-        this.gameClear  = gameClear;
+    private ResultDataStore resultDataStore;
+
+    public GameClearPresenter(GameClear gameClear, GameClearService gameClearService, GoalController
+        goalController, ScreenChange screenChange, HUDService hUDService, ResultDataStore resultDataStore)
+    {
+        this.gameClear = gameClear;
         this.gameClearService = gameClearService;
         this.goalController = goalController;
         this.screenChange = screenChange;
         this.hUDService = hUDService;
+        this.resultDataStore = resultDataStore;
     }
 
     void IStartable.Start()
@@ -32,14 +35,17 @@ public class GameClearPresenter : IStartable
 
         goalController.GoalObject.OnTriggerEnter2DAsObservable()
             .Where(other => other.gameObject.name == "Player")
-            .Subscribe(other => {
+            .Subscribe(async other =>
+            {
                 gameClearService.DisplayGameClear();
-                Object.Destroy(other.gameObject);
                 hUDService.TimerStop();
                 gameClearService.SetGameClearResultData();
-                })
+                other.gameObject.SetActive(false);
+                Object.Destroy(other.gameObject);
+                await resultDataStore.SubmitScoreAsync();
+            })
             .AddTo(goalController);
-        
+
         gameClear.resultButton.OnClickAsObservable()
             .Subscribe(_ => screenChange.ChangeScreen(ScreenStatus.Screen.Result))
             .AddTo(gameClear);
