@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UniRx;
 using VContainer;
+using KanKikuchi.AudioManager;
 
 public class Menu : MonoBehaviour
 {
@@ -17,6 +18,11 @@ public class Menu : MonoBehaviour
     private void Start()
     {
         buck.OnClickAsObservable()
-            .Subscribe(_ => screenChange.ChangeScreen(ScreenStatus.Screen.Title));
+            .Subscribe(_ =>
+            {
+                SEManager.Instance.Play(SEPath.TAP1);
+                screenChange.ChangeScreen(ScreenStatus.Screen.Title);
+            })
+            .AddTo(buck);
     }
 }
