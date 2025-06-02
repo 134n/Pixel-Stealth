@@ -20,11 +20,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -63,6 +64,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
@@ -823,41 +825,40 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      HexagonsShared_26: -952531960
-      HexagonsShared_25: -322647028
-      HexagonsShared_29: -974105768
+      HexagonsShared_0: 707801201
+      HexagonsShared_1: -1817430979
       HexagonsShared_10: -1218083126
-      HexagonsShared_8: 647054210
-      HexagonsShared_19: 886198447
-      HexagonsShared_9: 1136547527
-      HexagonsShared_2: -487487096
-      HexagonsShared_12: 911432576
       HexagonsShared_11: 1230585614
+      HexagonsShared_12: 911432576
+      HexagonsShared_13: 269080801
+      HexagonsShared_14: -1895368217
       HexagonsShared_15: 725019717
+      HexagonsShared_16: 911423057
+      HexagonsShared_17: 452608411
+      HexagonsShared_18: 1182878446
+      HexagonsShared_19: 886198447
+      HexagonsShared_2: -487487096
       HexagonsShared_20: -1963399963
+      HexagonsShared_21: 502590186
       HexagonsShared_22: 2036425265
       HexagonsShared_23: 743551967
-      HexagonsShared_3: 1800389899
-      HexagonsShared_1: -1817430979
-      HexagonsShared_14: -1895368217
+      HexagonsShared_24: 1560777451
+      HexagonsShared_25: -322647028
+      HexagonsShared_26: -952531960
+      HexagonsShared_27: -1018372793
       HexagonsShared_28: 167877176
-      HexagonsShared_6: 1302794666
-      HexagonsShared_18: 1182878446
-      HexagonsShared_16: 911423057
+      HexagonsShared_29: -974105768
+      HexagonsShared_3: 1800389899
       HexagonsShared_30: 1962053686
       HexagonsShared_31: -1413539957
-      HexagonsShared_13: 269080801
-      HexagonsShared_5: 1698374334
-      HexagonsShared_0: 707801201
-      HexagonsShared_24: 1560777451
       HexagonsShared_4: -1211879558
+      HexagonsShared_5: 1698374334
+      HexagonsShared_6: 1302794666
       HexagonsShared_7: 1349983731
-      HexagonsShared_21: 502590186
-      HexagonsShared_27: -1018372793
-      HexagonsShared_17: 452608411
-  spritePackingTag: 
+      HexagonsShared_8: 647054210
+      HexagonsShared_9: 1136547527
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
