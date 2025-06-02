@@ -1,37 +1,32 @@
 using KanKikuchi.AudioManager;
 using UniRx;
-using UnityEngine;
-using UnityEngine.UI;
 using VContainer;
+using VContainer.Unity;
 
-public class TitleTop : MonoBehaviour
+public class TitleTop : IStartable
 {
-    [SerializeField] Button stageSelect;
-
-    [SerializeField] Button menu;
-
     private ScreenChange screenChange;
 
+    private TitleView titleView;
+
     [Inject]
-    public void Inject(ScreenChange screenChange)
+    public void Inject(ScreenChange screenChange, TitleView titleView)
     {
         this.screenChange = screenChange;
+        this.titleView = titleView;
     }
 
-    public void Awake()
+    void IStartable.Start()
     {
         BGMManager.Instance.Play(BGMPath.TITLE1);
         BGMManager.Instance.FadeIn(BGMPath.TITLE1, 3);
-    }
 
-    public void Start()
-    {
-        stageSelect.OnClickAsObservable()
+        titleView.StageSelect.OnClickAsObservable()
                 .Subscribe(_ => { screenChange.ChangeScreen(ScreenStatus.Screen.StageSelect); })
-                .AddTo(this);
+                .AddTo(titleView.StageSelect);
 
-        menu.OnClickAsObservable()
+        titleView.Menu.OnClickAsObservable()
                 .Subscribe(_ => { screenChange.ChangeScreen(ScreenStatus.Screen.Menu); })
-                .AddTo(this);
+                .AddTo(titleView.StageSelect);
     }
 }
