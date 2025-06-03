@@ -3,7 +3,9 @@ using UnityEngine.UI;
 
 public class StageSelectButton : MonoBehaviour
 {
-    public Button[] stage;
+    [SerializeField] private Button[] stages;
+    public Button[] Stages => stages;
 
-    public Button buck;
+    [SerializeField] private Button buck;
+    public Button Buck => buck;
 }

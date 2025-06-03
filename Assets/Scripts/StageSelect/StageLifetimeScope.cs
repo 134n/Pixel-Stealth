@@ -9,5 +9,7 @@ public class StageLifetimeScope : LifetimeScope
         builder.Register<StageSelectService>(Lifetime.Singleton);
         builder.RegisterEntryPoint<StageSelectPresenter>();
         builder.RegisterComponentInHierarchy<StageSelectButton>();
+        
+        builder.RegisterEntryPoint<StageSelectAnimator>();
     }
 }
