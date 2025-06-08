@@ -1,3 +1,4 @@
+using UnityEditor.Build.Content;
 using VContainer;
 using VContainer.Unity;
 
@@ -26,7 +27,7 @@ public class Stage1LifetimeScope : LifetimeScope
         builder.Register<GameClearService>(Lifetime.Singleton);
 
         builder.Register<ResultService>(Lifetime.Singleton);
-        
+
         builder.RegisterComponentInHierarchy<HUDManager>();
         builder.RegisterEntryPoint<HUDPlesenter>();
         builder.Register<HUDService>(Lifetime.Singleton);
@@ -40,5 +41,8 @@ public class Stage1LifetimeScope : LifetimeScope
         builder.Register<GameOverService>(Lifetime.Singleton);
 
         builder.Register<ResultDataStore>(Lifetime.Singleton);
+
+        builder.RegisterComponentInHierarchy<ItemEffectManager>();
+        builder.RegisterEntryPoint<ItemPresenter>();
     }
 }
