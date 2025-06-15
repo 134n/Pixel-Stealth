@@ -44,5 +44,8 @@ public class Stage1LifetimeScope : LifetimeScope
 
         builder.RegisterComponentInHierarchy<ItemEffectManager>();
         builder.RegisterEntryPoint<ItemPresenter>();
+
+        builder.RegisterComponentInHierarchy<Move>();
+        builder.RegisterEntryPoint<SlimeParameter>();
     }
 }
