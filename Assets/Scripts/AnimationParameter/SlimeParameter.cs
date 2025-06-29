@@ -17,6 +17,8 @@ public class SlimeParameter : ITickable
 
     void ITickable.Tick()
     {
+        if (playerView.PlayerAnimator == null) return;
+        
         float speedx = math.abs(move.moveValue.x);
         playerView.PlayerAnimator.SetFloat("speedx", speedx);
         
