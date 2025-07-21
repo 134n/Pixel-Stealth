@@ -1,4 +1,3 @@
-using UnityEditor.Build.Content;
 using VContainer;
 using VContainer.Unity;
 
@@ -8,6 +7,7 @@ public class Stage1LifetimeScope : LifetimeScope
     {
         builder.Register<ScreenChange>(Lifetime.Singleton);
         builder.Register<PlayerStatus>(Lifetime.Singleton);
+
         builder.Register<FollowPlayer>(Lifetime.Singleton);
         builder.Register<WanderingEnemy>(Lifetime.Singleton);
         builder.Register<WaitTime>(Lifetime.Singleton);
@@ -47,5 +47,7 @@ public class Stage1LifetimeScope : LifetimeScope
 
         builder.RegisterComponentInHierarchy<Move>();
         builder.RegisterEntryPoint<SlimeParameter>();
+
+        builder.RegisterComponentInHierarchy<GameStartCountDown>();
     }
 }

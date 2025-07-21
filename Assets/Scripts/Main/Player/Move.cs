@@ -1,3 +1,4 @@
+using UniRx;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,10 +10,18 @@ public class Move : MonoBehaviour
 
     public float speed = 1f;
 
+    private bool canMove;
 
     private void OnEnable()
     {
         inputMove.Enable();
+
+        MessageBroker.Default.Receive<CountDownCompletedMessage>()
+            .Subscribe(_ =>
+            {
+                canMove = true;
+            })
+            .AddTo(this);
     }
 
     private void OnDisable()
@@ -20,8 +29,10 @@ public class Move : MonoBehaviour
         inputMove.Disable();
     }
 
-    public void Update()
+    private void Update()
     {
+        if (!canMove) return;
+
         moveValue = inputMove.ReadValue<Vector2>();
 
         transform.Translate(
