@@ -3,7 +3,7 @@ using Cysharp.Threading.Tasks;
 using VContainer;
 using VContainer.Unity;
 
-public class HUDPlesenter : ITickable, IAsyncStartable
+public class HUDPlesenter : IAsyncStartable
 {
     public HUDService hUDService;
 
@@ -27,10 +27,6 @@ public class HUDPlesenter : ITickable, IAsyncStartable
         hUDService.TimerStop();
         await gameStart.StartCountDownAsync(cancellation);
         hUDService.StartTimer();
-    }
-
-    void ITickable.Tick()
-    {
-        hUDService.UpdateTimer();
+        await hUDService.UpdateTimerAsync();
     }
 }

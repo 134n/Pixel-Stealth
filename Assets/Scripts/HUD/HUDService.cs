@@ -1,3 +1,4 @@
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using UniRx;
 using UnityEditor;
@@ -34,11 +35,11 @@ public class HUDService
     {
         set => isTimerRun = value;
         get => isTimerRun;
-    } 
+    }
 
     public void TimerStop()
     {
-        if(!IsTimerRun) return;
+        if (!IsTimerRun) return;
         IsTimerRun = false;
     }
 
@@ -68,20 +69,14 @@ public class HUDService
         UpdateTimerText();
     }
 
-    public void UpdateTimer()
+    public async UniTask UpdateTimerAsync(CancellationToken cancellation = default)
     {
-        if (!isTimerRun) return;
-
-        hUDManager.limitTime -= 1 * Time.deltaTime;
-
-        if (hUDManager.limitTime <= 0f)
+        while (isTimerRun)
         {
-            hUDManager.limitTime = 0f;
-            isTimerRun = false;
-            gameOverService.LimitTimeSubject();
-        }
-
-        UpdateTimerText();
+            hUDManager.limitTime += Time.deltaTime;
+            UpdateTimerText();
+            await UniTask.Yield(PlayerLoopTiming.Update, cancellation);
+        }   
     }
 
     public void UpdateTimerText()
