@@ -13,9 +13,12 @@ public class ResultDataStore
 
     public async UniTask SubmitScoreAsync()
     {
+        int score = 10000 - (int)(LimitTimeData * 100); 
+        if(score <= 0){ score = 0; }
+
         try
         {
-            bool success = await PlayFabManager.Instance.SubmitMyScore((int)LimitTimeData, RankingName);
+            bool success = await PlayFabManager.Instance.SubmitMyScore(score, RankingName);
 
             if (success)
                 Debug.Log("スコア送信成功");
