@@ -4,6 +4,7 @@ using Cysharp.Threading.Tasks.Linq;
 using System;
 using UnityEngine.UI;
 using UniRx;
+using KanKikuchi.AudioManager;
 
 public class GameStartCountDown : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class GameStartCountDown : MonoBehaviour
         {
             for (int i = 3; i >= 1; i--)
             {
+                SEManager.Instance.Play(SEPath.TAP1);
                 await writter.YieldAsync(i);
                 await UniTask.Delay(TimeSpan.FromSeconds(1), cancellationToken: innertoken);
             }
@@ -24,6 +26,9 @@ public class GameStartCountDown : MonoBehaviour
             countdownText.text = count.ToString();
             return UniTask.CompletedTask;
         }, cancellationToken: cancellation);
+
+        SEManager.Instance.Play(SEPath.TAP1);
+        BGMManager.Instance.Play(BGMPath.BATTLE27);
 
         countdownText.text = "Start";
         await UniTask.Delay(TimeSpan.FromSeconds(1), cancellationToken: cancellation);
