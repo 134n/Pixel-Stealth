@@ -1,3 +1,4 @@
+using KanKikuchi.AudioManager;
 using UniRx;
 using VContainer;
 using VContainer.Unity;
@@ -22,6 +23,8 @@ public class ResultTop : IStartable
 
     void IStartable.Start()
     {
+        BGMManager.Instance.FadeOut();
+
         PlayFabManager.Instance.LoadRankingScene("HighScore");
 
         resultView.ResultTimeText.text = "Time: " + ResultDataStore.LimitTimeData.ToString("F2");

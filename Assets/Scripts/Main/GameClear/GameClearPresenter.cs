@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using KanKikuchi.AudioManager;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
@@ -37,6 +38,9 @@ public class GameClearPresenter : IStartable
             .Where(other => other.gameObject.name == "Player")
             .Subscribe(async other =>
             {
+                BGMManager.Instance.FadeOut();
+                BGMManager.Instance.Play(SEPath.JINGLE10, isLoop: false);
+
                 gameClearService.DisplayGameClear();
                 hUDService.TimerStop();
                 gameClearService.SetGameClearResultData();

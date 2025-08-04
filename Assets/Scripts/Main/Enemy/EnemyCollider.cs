@@ -1,3 +1,4 @@
+using KanKikuchi.AudioManager;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
@@ -28,6 +29,9 @@ public class EnemyCollider : MonoBehaviour
             .Where(other => other.gameObject.name == player)
             .Subscribe(other =>
             {
+                BGMManager.Instance.FadeOut();
+                BGMManager.Instance.Play(SEPath.JINGLE10, isLoop: false);
+                
                 playerView.Player.SetActive(false);
                 gameOverService.DisplayGameOver();
                 gameOverService.SetGameOverResultData();
