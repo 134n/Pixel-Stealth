@@ -24,6 +24,7 @@ public class ResultTop : IStartable
     void IStartable.Start()
     {
         BGMManager.Instance.FadeOut();
+        BGMManager.Instance.FadeIn(BGMPath.HEARTBEAT01);
 
         PlayFabManager.Instance.LoadRankingScene("HighScore");
 
