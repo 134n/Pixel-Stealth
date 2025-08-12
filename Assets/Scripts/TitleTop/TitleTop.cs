@@ -18,8 +18,8 @@ public class TitleTop : IStartable
 
     void IStartable.Start()
     {
-        BGMManager.Instance.Play(BGMPath.TITLE1);
-        BGMManager.Instance.FadeIn(BGMPath.TITLE1, 3);
+        BGMManager.Instance.Play(BGMPath.NESRPGA042_FIELD_LOOP135);
+        BGMManager.Instance.FadeIn(BGMPath.NESRPGA042_FIELD_LOOP135, 3);
 
         titleView.StageSelect.OnClickAsObservable()
                 .Subscribe(_ => { screenChange.ChangeScreen(ScreenStatus.Screen.StageSelect); })

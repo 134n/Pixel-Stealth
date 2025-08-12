@@ -16,7 +16,7 @@ public class GameStartCountDown : MonoBehaviour
         {
             for (int i = 3; i >= 1; i--)
             {
-                SEManager.Instance.Play(SEPath.TAP1);
+                SEManager.Instance.Play(SEPath.GBGENERAL0113_PITCH);
                 await writter.YieldAsync(i);
                 await UniTask.Delay(TimeSpan.FromSeconds(1), cancellationToken: innertoken);
             }
@@ -27,8 +27,8 @@ public class GameStartCountDown : MonoBehaviour
             return UniTask.CompletedTask;
         }, cancellationToken: cancellation);
 
-        SEManager.Instance.Play(SEPath.TAP1);
-        BGMManager.Instance.Play(BGMPath.BATTLE27);
+        SEManager.Instance.Play(SEPath.GBGENERAL0114_PITCH);
+        BGMManager.Instance.Play(BGMPath.NESRPGA022_TOWN1_LOOP130);
 
         countdownText.text = "Start";
         await UniTask.Delay(TimeSpan.FromSeconds(1), cancellationToken: cancellation);

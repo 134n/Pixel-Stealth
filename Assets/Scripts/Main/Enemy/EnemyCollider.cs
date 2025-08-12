@@ -30,7 +30,7 @@ public class EnemyCollider : MonoBehaviour
             .Subscribe(other =>
             {
                 BGMManager.Instance.FadeOut();
-                BGMManager.Instance.Play(SEPath.JINGLE10, isLoop: false);
+                BGMManager.Instance.Play(SEPath.NESRPGA121_INN, isLoop: false);
                 
                 playerView.Player.SetActive(false);
                 gameOverService.DisplayGameOver();

@@ -39,7 +39,7 @@ public class GameClearPresenter : IStartable
             .Subscribe(async other =>
             {
                 BGMManager.Instance.FadeOut();
-                BGMManager.Instance.Play(SEPath.JINGLE10, isLoop: false);
+                BGMManager.Instance.Play(SEPath.NESRPGA123_LEVEL_UP, isLoop: false);
 
                 gameClearService.DisplayGameClear();
                 hUDService.TimerStop();

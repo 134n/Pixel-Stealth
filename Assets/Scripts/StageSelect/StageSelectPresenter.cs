@@ -19,8 +19,6 @@ public class StageSelectPresenter : IStartable
 
     void IStartable.Start()
     {
-        BGMManager.Instance.FadeOut();
-        
         Observable.Merge(
             stageSelectButton.Stages.Select(button => button.OnClickAsObservable().Select(_ => button.name)))
             .Subscribe(name => stageSelectService.OnClickButtonScreenChangeByName(name))
