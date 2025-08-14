@@ -12,6 +12,8 @@ public class Move : MonoBehaviour
 
     private bool canMove;
 
+    [SerializeField] private VariableJoystick variableJoystick;
+
     private void OnEnable()
     {
         inputMove.Enable();
@@ -34,6 +36,7 @@ public class Move : MonoBehaviour
         if (!canMove) return;
 
         moveValue = inputMove.ReadValue<Vector2>();
+        moveValue = variableJoystick.Direction;
 
         transform.Translate(
             moveValue.x * speed * Time.deltaTime,
