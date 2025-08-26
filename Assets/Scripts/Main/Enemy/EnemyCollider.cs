@@ -12,13 +12,16 @@ public class EnemyCollider : MonoBehaviour
 
     private HUDService hUDService;
 
+    private ResultService resultService;
+
     [Inject]
-    public void Inject(PlayerView playerView, 
-        GameOverService gameOverService, HUDService hUDService)
+    public void Inject(PlayerView playerView,
+        GameOverService gameOverService, HUDService hUDService, ResultService resultService)
     {
         this.playerView = playerView;
         this.gameOverService = gameOverService;
         this.hUDService = hUDService;
+        this.resultService = resultService;
     }
 
     public const string player = "Player";
@@ -31,12 +34,14 @@ public class EnemyCollider : MonoBehaviour
             {
                 BGMManager.Instance.FadeOut();
                 BGMManager.Instance.Play(SEPath.NESRPGA121_INN, isLoop: false);
-                
+
+                resultService.SaveRetryScene();
+
                 playerView.Player.SetActive(false);
                 gameOverService.DisplayGameOver();
                 gameOverService.SetGameOverResultData();
                 hUDService.TimerStop();
             })
-            .AddTo(this);
+        .AddTo(this);
     }
 }

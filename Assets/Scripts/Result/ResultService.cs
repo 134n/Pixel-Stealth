@@ -18,6 +18,11 @@ public class ResultService
         SceneManager.LoadScene(retryScene);
     }
 
+    public string GetLoadScene()
+    {
+        return retryScene;
+    }
+
     /// <summary>
     /// 残り時間によってランクを分ける
     /// </summary>

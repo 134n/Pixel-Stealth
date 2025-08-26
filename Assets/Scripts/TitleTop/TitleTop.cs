@@ -2,6 +2,7 @@ using KanKikuchi.AudioManager;
 using UniRx;
 using VContainer;
 using VContainer.Unity;
+using YuRinChiLibrary.PlayFab;
 
 public class TitleTop : IStartable
 {
@@ -18,6 +19,8 @@ public class TitleTop : IStartable
 
     void IStartable.Start()
     {
+        PlayFabManager.Instance?.ResetData();
+
         BGMManager.Instance.Play(BGMPath.NESRPGA042_FIELD_LOOP135);
         BGMManager.Instance.FadeIn(BGMPath.NESRPGA042_FIELD_LOOP135, 3);
 

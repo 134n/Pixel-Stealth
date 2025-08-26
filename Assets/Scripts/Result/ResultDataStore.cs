@@ -2,6 +2,7 @@ using YuRinChiLibrary.PlayFab;
 using Cysharp.Threading.Tasks;
 using System;
 using UnityEngine;
+using VContainer;
 
 public class ResultDataStore
 {
@@ -9,16 +10,26 @@ public class ResultDataStore
 
     public static string RankData { get; set; }
 
-    private static string RankingName = "HighScore";
+    private readonly ResultService resultService;
+
+    private string statisticName;
+
+    [Inject]
+    public ResultDataStore(ResultService resultService)
+    {
+        this.resultService = resultService;
+    }
 
     public async UniTask SubmitScoreAsync()
     {
-        int score = 10000 - (int)(LimitTimeData * 100); 
-        if(score <= 0){ score = 0; }
+        int score = 10000 - (int)(LimitTimeData * 100);
+        if (score <= 0) { score = 0; }
+
+        statisticName = resultService.GetLoadScene()?? "DefaultStage";
 
         try
         {
-            bool success = await PlayFabManager.Instance.SubmitMyScore(score, RankingName);
+            bool success = await PlayFabManager.Instance.SubmitMyScore(score, statisticName);
 
             if (success)
                 Debug.Log("スコア送信成功");

@@ -1,5 +1,6 @@
 using KanKikuchi.AudioManager;
 using UniRx;
+using UnityEngine.SceneManagement;
 using VContainer;
 using VContainer.Unity;
 using YuRinChiLibrary.PlayFab;
@@ -11,6 +12,8 @@ public class ResultTop : IStartable
     private readonly ScreenChange screenChange;
 
     private readonly ResultService resultService;
+    
+    private string statisticName;
 
     [Inject]
     public ResultTop(ResultView resultView, ScreenChange screenChange,
@@ -26,7 +29,8 @@ public class ResultTop : IStartable
         BGMManager.Instance.FadeOut();
         BGMManager.Instance.FadeIn(BGMPath.HEARTBEAT01);
 
-        PlayFabManager.Instance.LoadRankingScene("HighScore");
+        statisticName = resultService.GetLoadScene()?? "DefaultStage";
+        PlayFabManager.Instance.LoadRankingScene(statisticName);
 
         resultView.ResultTimeText.text = "Time: " + ResultDataStore.LimitTimeData.ToString("F2");
 
@@ -41,6 +45,6 @@ public class ResultTop : IStartable
             .Subscribe(_ => resultService.LoadRetryScene());
 
         resultView.Ranking.OnClickAsObservable()
-            .Subscribe(_ => PlayFabManager.Instance.LoadRankingScene("HighScore"));
+            .Subscribe(_ => PlayFabManager.Instance.LoadRankingScene(statisticName));
     }
 }

@@ -14,15 +14,19 @@ public class GameOverPresenter : IStartable
 
     private ResultDataStore resultDataStore;
 
+    private ResultService resultService;
+
     [Inject]
     public GameOverPresenter(GameOverView gameOverView, GameOverService gameOverService,
-        ScreenChange screenChange, PlayerView playerView, ResultDataStore resultDataStore)
+        ScreenChange screenChange, PlayerView playerView, ResultDataStore resultDataStore,
+        ResultService resultService)
     {
         this.gameOverView = gameOverView;
         this.gameOverService = gameOverService;
         this.screenChange = screenChange;
         this.playerView = playerView;
         this.resultDataStore = resultDataStore;
+        this.resultService = resultService;
     }
 
     void IStartable.Start()
@@ -32,6 +36,8 @@ public class GameOverPresenter : IStartable
         gameOverService.LimitSub
             .Subscribe(async _ =>
             {
+                resultService.LoadRetryScene();
+                resultService.SaveRetryScene();
                 playerView.Player.SetActive(false);
                 gameOverService.DisplayGameOver();
                 gameOverService.SetGameOverResultData();
