@@ -7,7 +7,8 @@ using Cysharp.Threading.Tasks;
 
 public class EnemyTrack : MonoBehaviour
 {
-    [SerializeField] private GameObject enemyScope;
+
+    [SerializeField] private Collider2D enemyScope;
 
     [SerializeField] private Transform target;
 
@@ -19,38 +20,28 @@ public class EnemyTrack : MonoBehaviour
 
     private WaitTime waitTime;
 
-    [Inject] 
-    public void Inject(FollowPlayer followPlayer,WanderingEnemy wanderingEnemy,WaitTime waitTime) 
-    { 
-        this.followPlayer = followPlayer; 
+    
+
+    [Inject]
+    public void Inject(FollowPlayer followPlayer, WanderingEnemy wanderingEnemy, WaitTime waitTime)
+    {
+        this.followPlayer = followPlayer;
         this.wanderingEnemy = wanderingEnemy;
         this.waitTime = waitTime;
     }
 
     private bool isPatrol = true;
+
     private bool isFollow = false;
 
     private NavMeshAgent agent;
-
-    public void Update()
-    {
-        if (isPatrol)
-        {
-            wanderingEnemy.Wandering(agent, wanderingPoints);
-        }
-
-        if (isFollow)
-        {
-            isPatrol = false;
-            followPlayer.Follow(agent, target);
-        }
-    }
 
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
+        agent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
 
         enemyScope.OnTriggerEnter2DAsObservable()
             .Subscribe(_ =>
@@ -71,5 +62,21 @@ public class EnemyTrack : MonoBehaviour
                 isPatrol = true;
             })
             .AddTo(this);
+    }
+
+    public void Update()
+    {
+        if (wanderingPoints == null || wanderingPoints.Length == 0) Debug.LogError("wanderingPoints is null or empty!");
+
+        if (isPatrol)
+        {
+            wanderingEnemy.Wandering(agent, wanderingPoints);
+        }
+
+        if (isFollow)
+        {
+            isPatrol = false;
+            followPlayer.Follow(agent, target);
+        }
     }
 }

@@ -8,9 +8,9 @@ public class Stage1LifetimeScope : LifetimeScope
         builder.Register<ScreenChange>(Lifetime.Singleton);
         builder.Register<PlayerStatus>(Lifetime.Singleton);
 
-        builder.Register<FollowPlayer>(Lifetime.Singleton);
-        builder.Register<WanderingEnemy>(Lifetime.Singleton);
-        builder.Register<WaitTime>(Lifetime.Singleton);
+        builder.Register<FollowPlayer>(Lifetime.Transient);
+        builder.Register<WanderingEnemy>(Lifetime.Transient);
+        builder.Register<WaitTime>(Lifetime.Transient);
 
         builder.RegisterComponentInHierarchy<PlayerView>();
         builder.RegisterEntryPoint<PickItemPresenter>();
