@@ -15,6 +15,7 @@ public class Menu : MonoBehaviour
     {
         this.screenChange = screenChange;
     }
+    
     private void Start()
     {
         buck.OnClickAsObservable()
