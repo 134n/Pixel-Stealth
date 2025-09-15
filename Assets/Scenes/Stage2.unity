@@ -10097,6 +10097,11 @@ Transform:
   m_Father: {fileID: 188807721}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+--- !u!58 &409222130 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 3919460192392718266, guid: bedcb68ad4eca4ffa9d761faac1c44d0, type: 3}
+  m_PrefabInstance: {fileID: 3919460192096891144}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &413688384
 GameObject:
   m_ObjectHideFlags: 0
@@ -14100,10 +14105,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 187907835}
     - target: {fileID: 3919460191889275644, guid: bedcb68ad4eca4ffa9d761faac1c44d0, type: 3}
+      propertyPath: enemyScope
+      value: 
+      objectReference: {fileID: 409222130}
+    - target: {fileID: 3919460191889275644, guid: bedcb68ad4eca4ffa9d761faac1c44d0, type: 3}
       propertyPath: wanderingPoints.Array.data[0]
       value: 
       objectReference: {fileID: 1419990164}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -4061044768758404572, guid: bedcb68ad4eca4ffa9d761faac1c44d0, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
