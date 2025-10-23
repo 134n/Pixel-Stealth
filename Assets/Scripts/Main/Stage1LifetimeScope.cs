@@ -49,5 +49,9 @@ public class Stage1LifetimeScope : LifetimeScope
         builder.RegisterEntryPoint<SlimeParameter>();
 
         builder.RegisterComponentInHierarchy<GameStartCountDown>();
+
+        builder.RegisterComponentInHierarchy<EnemyAttackOnceView>();
+        builder.RegisterEntryPoint<EnemyAttackOncePresenter>();
+        builder.Register<EnemyAttackOnceService>(Lifetime.Singleton);
     }
 }
