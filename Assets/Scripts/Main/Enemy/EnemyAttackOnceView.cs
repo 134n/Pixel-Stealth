@@ -1,3 +1,4 @@
+using DG.Tweening.CustomPlugins;
 using UniRx;
 using UnityEngine;
 using UnityEngine.AI;
@@ -64,5 +65,14 @@ public class EnemyAttackOnceView : MonoBehaviour
     public void SetIsAttackEX(bool value)
     {
         isAttackEX = value;
+    }
+
+    private bool isAgentDestination = false;
+
+    public bool IsAgentDestination => isAgentDestination;
+
+    public void SetAgentDestination(bool value)
+    {
+        isAgentDestination = true;
     }
 }

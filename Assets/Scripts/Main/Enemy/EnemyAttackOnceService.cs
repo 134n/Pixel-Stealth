@@ -82,12 +82,20 @@ public class EnemyAttackOnceService
             }
             enemyAttackOnceView.Agent.speed = 5f;
 
+            enemyAttackOnceView.SetIsAttack(true);
+
             enemyAttackOnceView.Agent.SetDestination(enemyAttackOnceView.Target.position);
+
+            await UniTask.WaitUntil(() =>
+                !enemyAttackOnceView.Agent.pathPending && 
+                enemyAttackOnceView.Agent.remainingDistance <= enemyAttackOnceView.Agent.stoppingDistance
+            );
+
             enemyAttackOnceView.SetIsAttack(false);
         })
         .AddTo(enemyAttackOnceView);
     }
-    
+
     public void EnemyAttackOnceForAgent()
     {
         Observable.Interval(TimeSpan.FromSeconds(5))
@@ -96,7 +104,6 @@ public class EnemyAttackOnceService
             .Where(_ => enemyAttackOnceView.IsPlayerSearchEX.Value)
             .Subscribe(async _ =>
             {
-                Debug.Log("aaa");
                 enemyAttackOnceView.SetIsAttackEX(true);
                 await UniTask.Delay(TimeSpan.FromSeconds(1));
                 if (!enemyAttackOnceView.IsPlayerSearchEX.Value)
@@ -104,7 +111,7 @@ public class EnemyAttackOnceService
                     enemyAttackOnceView.SetIsAttackEX(false);
                     return;
                 }
-                enemyAttackOnceView.Agent.speed=1f;
+                enemyAttackOnceView.Agent.speed = 1f;
                 enemyAttackOnceView.Agent.SetDestination(enemyAttackOnceView.Target.position);
                 enemyAttackOnceView.SetIsAttackEX(false);
             })

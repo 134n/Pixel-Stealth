@@ -3,7 +3,7 @@ using VContainer.Unity;
 
 public class EnemyAttackOncePresenter : IStartable
 {
-    private EnemyAttackOnceService enemyAttackOnceService;
+    private readonly EnemyAttackOnceService enemyAttackOnceService;
 
     [Inject]
     public EnemyAttackOncePresenter(
