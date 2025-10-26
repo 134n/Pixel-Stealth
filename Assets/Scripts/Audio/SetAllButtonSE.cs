@@ -7,7 +7,7 @@ public class SetTitleAudio : MonoBehaviour
 {
     public void Awake()
     {
-        Button[] allButtons = FindObjectsOfType<Button>(true);
+        Button[] allButtons = FindObjectsByType<Button>(FindObjectsInactive.Include,FindObjectsSortMode.None);
 
         foreach (var btn in allButtons)
         {

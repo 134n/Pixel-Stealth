@@ -6,7 +6,7 @@ public class UIAutoSetUp : MonoBehaviour
 {
     public void Awake()
     {
-        Button[] buttons = FindObjectsOfType<Button>();
+        Button[] buttons = FindObjectsByType<Button>(FindObjectsInactive.Include,FindObjectsSortMode.None);
 
         foreach (var bts in buttons)
         {
