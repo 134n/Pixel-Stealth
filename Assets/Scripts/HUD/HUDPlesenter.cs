@@ -27,6 +27,6 @@ public class HUDPlesenter : IAsyncStartable
         hUDService.TimerStop();
         await gameStart.StartCountDownAsync(cancellation);
         hUDService.StartTimer();
-        await hUDService.UpdateTimerAsync();
+        await hUDService.UpdateTimerAsync(cancellation);
     }
 }
