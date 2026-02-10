@@ -16,9 +16,9 @@ public class EnemyAttackOncePresenter : IStartable
     {
         enemyAttackOnceService.PlayerSearchEnable();
         enemyAttackOnceService.PlayerSearchDisable();
-        enemyAttackOnceService.PlayerSearchEXEnable();
-        enemyAttackOnceService.PlayerSearchEXDisable();
-        enemyAttackOnceService.EnemyAttackOnceForAgent();
+        // enemyAttackOnceService.PlayerSearchEXEnable();
+        // enemyAttackOnceService.PlayerSearchEXDisable();
+        //enemyAttackOnceService.EnemyAttackOnceForAgent();
         enemyAttackOnceService.EnemyAttackOnce();
     }
 }

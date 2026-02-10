@@ -53,5 +53,14 @@ public class Stage1LifetimeScope : LifetimeScope
         builder.RegisterComponentInHierarchy<EnemyAttackOnceView>();
         builder.RegisterEntryPoint<EnemyAttackOncePresenter>();
         builder.Register<EnemyAttackOnceService>(Lifetime.Singleton);
+
+        builder.RegisterComponentInHierarchy<EnemyAnimView>();
+        builder.RegisterComponentInHierarchy<EnemyMoveModel>();
+
+        builder.RegisterComponentInHierarchy<GameOverPlayerView>()
+            .As<IGameOverInterface>()
+            .As<IHitStream>();
+        builder.RegisterEntryPoint<GameOverPlayerPresenter>();
+        builder.Register<GameOverPlayerService>(Lifetime.Scoped);
     }
 }
